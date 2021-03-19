@@ -1,0 +1,17 @@
+<form [formGroup]="todoForm" (ngSubmit)="saveForm()" class="form">
+  <mat-form-field>
+    <input matInput formControlName="name" placeholder="Enter name">
+    <mat-error *ngIf="todoForm.get('name')?.hasError('required')">Name is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="description" placeholder="Enter description">
+    <mat-error *ngIf="todoForm.get('description')?.hasError('required')">Description is required</mat-error>
+  </mat-form-field>
+  <mat-checkbox formControlName="completed">Completed</mat-checkbox>
+  <mat-checkbox formControlName="favourite">Favourite</mat-checkbox>
+  <mat-form-field>
+    <input matInput type="datetime-local" formControlName="expiryDate" placeholder="Enter expiry date">
+    <mat-error *ngIf="todoForm.get('expiryDate')?.hasError('required')">Expiry date is required</mat-error>
+  </mat-form-field>
+  <button mat-raised-button>Save</button>
+</form>

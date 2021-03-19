@@ -1,0 +1,51 @@
+<p>todo-list works!</p>
+<table mat-table [dataSource]="todoList$" matSort matSortActive="completed" matSortDirection="desc"
+       class="mat-elevation-z8 table">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef class="cell"> Name </th>
+    <td mat-cell *matCellDef="let element" class="cell"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef class="cell"> Description </th>
+    <td mat-cell *matCellDef="let element" class="cell"> {{element.description}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="completed">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell"> Completed </th>
+    <td mat-cell *matCellDef="let element" class="cell">
+      <mat-checkbox [checked]="element.completed" disabled="true"></mat-checkbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="favourite">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell"> Favourite </th>
+    <td mat-cell *matCellDef="let element" class="cell">
+      <mat-checkbox [checked]="element.favourite" disabled="true"></mat-checkbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expiryDate" class="cell">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="cell"> ExpiryDate </th>
+    <td mat-cell *matCellDef="let element" class="cell"> {{element.expiryDate}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions" class="cell">
+    <th mat-header-cell *matHeaderCellDef class="cell"> Actions </th>
+    <td mat-cell *matCellDef="let element" class="cell">
+      <button mat-button (click)="editTodo(element)">Edit</button>
+      <button mat-button (click)="deleteTodo(element.id)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<h1>New Todo form</h1>
+<div class="form-container">
+  <app-todo></app-todo>
+</div>
+<h1>Edit Todo form</h1>
+<div class="form-container">
+  <app-todo [todo$]="selectedTodo"></app-todo>
+</div>
