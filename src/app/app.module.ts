@@ -9,15 +9,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
-import { TodoComponent } from './todo/todo.component';
+import { TodoFormComponent } from './todo-form/todo-form.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, TodoListComponent, TodoComponent],
+  declarations: [
+    AppComponent,
+    TodoListComponent,
+    TodoFormComponent,
+    ConfirmDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,6 +36,7 @@ import { TodoComponent } from './todo/todo.component';
     MatSortModule,
     FormsModule,
     MatCheckboxModule,
+    MatDialogModule,
     ReactiveFormsModule,
   ],
   providers: [],

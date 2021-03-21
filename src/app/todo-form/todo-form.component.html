@@ -1,17 +1,23 @@
 <form [formGroup]="todoForm" (ngSubmit)="saveForm()" class="form">
   <mat-form-field>
-    <input matInput formControlName="name" placeholder="Enter name">
+    <mat-label>Enter name</mat-label>
+    <input matInput formControlName="name" placeholder="Name">
     <mat-error *ngIf="todoForm.get('name')?.hasError('required')">Name is required</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput formControlName="description" placeholder="Enter description">
+    <mat-label>Enter description</mat-label>
+    <input matInput formControlName="description" placeholder="Some description of todo">
     <mat-error *ngIf="todoForm.get('description')?.hasError('required')">Description is required</mat-error>
   </mat-form-field>
   <mat-checkbox formControlName="completed">Completed</mat-checkbox>
   <mat-checkbox formControlName="favourite">Favourite</mat-checkbox>
   <mat-form-field>
-    <input matInput type="datetime-local" formControlName="expiryDate" placeholder="Enter expiry date">
+    <mat-label>Enter expiry date</mat-label>
+    <input matInput type="datetime-local" formControlName="expiryDate" placeholder="Expiry date">
     <mat-error *ngIf="todoForm.get('expiryDate')?.hasError('required')">Expiry date is required</mat-error>
   </mat-form-field>
-  <button mat-raised-button>Save</button>
+  <div class="buttons">
+    <button type="button" mat-raised-button (click)="cancel()">Cancel</button>
+    <button type="submit" mat-raised-button [disabled]="todoForm.invalid">Save</button>
+  </div>
 </form>

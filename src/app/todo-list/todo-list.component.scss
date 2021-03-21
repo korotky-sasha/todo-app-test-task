@@ -1,14 +1,17 @@
+.add-button-container {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
 .table {
   margin-left: auto;
   margin-right: auto;
   .cell {
     padding-left: 10px;
     padding-right: 10px;
+    .date-expired {
+      color: red;
+    }
   }
-}
-
-.form-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 648px;
 }

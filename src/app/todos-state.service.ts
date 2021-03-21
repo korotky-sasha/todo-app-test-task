@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+import { v4 as uuidv4 } from 'uuid';
+
 import { Todo } from './shared/models';
 
 @Injectable({
@@ -24,7 +26,7 @@ export class TodosStateService {
     this.todos = [
       ...this.todos,
       {
-        id: this.todos.length + 1,
+        id: uuidv4(),
         name: newTodo.name,
         description: newTodo.description,
         completed: newTodo.completed,
@@ -34,7 +36,7 @@ export class TodosStateService {
     ];
   }
 
-  removeTodo(id: number): void {
+  removeTodo(id: string): void {
     this.todos = this.todos.filter((todo) => todo.id !== id);
   }
 
